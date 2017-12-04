@@ -1,0 +1,39 @@
+language: ruby
+after_success: script/report
+before_script: script/report before
+script: script/test
+sudo: false
+cache:
+  bundler: true
+  directories:
+    - vendor/bundle
+    - node_modules
+env:
+  global:
+    secure: "\
+      VJ2Md2Ugn9f1iLMMjPp0H41Em9B+7ljevJGkcHQmY2JoCzdK4+PYL7rXIs1KnP+m5hF9LxQCT\
+      kD/SlCvrYFeCu/8oDUh1kbXCvGtdsW/iED594YWtMX28AM0awXyixOyek+uuTMcP5YFtonkYF\
+      tbAobMkMqhXaetE7ftxxr2v14uKHn2TK42UkwbAQxi6B5/1Wqek/1t+QaUKLEV8Cx1b1EVNqp\
+      69ki5GNnIY96L1zJVDS+J0oko5ghLwCjtz/+MGNcduHZPis2nZxSroBnE2eAdCJQuyEizG/yU\
+      qIWgCXGHM47EUqrpJvla5nLxMkWhILTKpnbZlAbXcKShfC2KwHqjck1j55iRcFZofTgkxA7tq\
+      mIxwCdI+8br6B7br7+xUpS2D10hr4ITsDXo3euEsnVK10demM88Tvm3PNQb83OWG1G/G0bju+\
+      H9dUbRdOzEVCvg8fmJVCPh+TUko6Re6GcUMZmi/1WcQsJGS/Fj6L2tM1sPxSoDBT9UtOyHtBe\
+      KbfD8iV52RtQ7m0sc9AQueZFST3u4GpjXC35wGW6AyfFzzFU2jMYrsbBMpP2XbJbD0cZde7L/\
+      SuehRQPxS8stTgbi30D6NQ4klW4Yj8nvkl2hGnw7TqUrQQk0HczCpiqZlEdUmnhXY4sBjCkJd\
+      tm7mgyxWI7PZZ1l++X80XYPGLk=
+    "
+  matrix:
+    - LINTING=true
+rvm:
+  - 2.4
+matrix:
+  fast_finish: true
+notifications:
+  email:
+    recipients:
+      - jordon@envygeeks.io
+    on_success: change
+    on_failure: change
+branches:
+  only:
+    - master

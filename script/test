@@ -1,0 +1,7 @@
+#!/bin/bash
+[ "$DEBUG" = "true" ] && set -x
+set -e
+
+[ "$LINTING" == "true" ] && exec script/lint "$@"
+[ -f script/override/test ] && exec script/override/test "$@" \
+  || exec bundle exec rspec
