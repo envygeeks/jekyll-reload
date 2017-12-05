@@ -7,8 +7,8 @@ module Jekyll
     attr_accessor :reloader
     require_relative "reload/hooks/server"
     require_relative "reload/hooks/reaction"
+    require_relative "reload/plugins/jekyll/assets/hook"
     require_relative "reload/hooks/config"
-    require_relative "reload/hooks/assets"
     require_relative "reload/tag"
   end
 end
