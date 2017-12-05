@@ -64,6 +64,7 @@ module Jekyll
 
       # --
       def asset?(path)
+        return false unless path.query
         CGI.parse(path.query).key?("sha") &&
           path.path == PATH
       end
