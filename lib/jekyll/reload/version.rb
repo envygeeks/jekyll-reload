@@ -4,6 +4,6 @@
 
 module Jekyll
   module Reload
-    VERSION = "0.1.alpha"
+    VERSION = "1.0.0"
   end
 end
