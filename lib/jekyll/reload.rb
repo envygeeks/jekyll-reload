@@ -1,14 +1,14 @@
 # Frozen-string-literal: true
-# rubocop:disable Style/BlockDelimiters
-# rubocop:disable Layout/MultilineBlockLayout
-# rubocop:disable Layout/BlockEndNewline
 # Copyright: 2017 - Apache 2.0 License
 # Encoding: utf-8
 
 module Jekyll
   class Site
     attr_accessor :reloader
-    %i(server reaction config).map { |v| require_relative \
-      "reload/hooks/#{v}" }
+    require_relative "reload/hooks/server"
+    require_relative "reload/hooks/reaction"
+    require_relative "reload/hooks/config"
+    require_relative "reload/hooks/assets"
+    require_relative "reload/tag"
   end
 end

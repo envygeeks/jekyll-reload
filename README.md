@@ -8,13 +8,29 @@ Jekyll Reload is a modern, simple, and to the point take on LiveReload for Jekyl
 
 ## Usage
 
-1. Download the [Browser Plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-
-1. ```
-  gem "jekyll-reload", {
-    group: "jekyll-plugins"
-  }
+```ruby
+gem "jekyll-reload", {
+  group: "jekyll-plugins"
+}
 ```
+
+### In your Layout `<head>`
+#### W/ Jekyll-Assets
+
+```html
+{% asset livereload.js %}
+```
+
+#### Vendor
+
+```html
+{% livereload %}
+```
+
+#### Addon
+
+1. Download the [Browser Plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+2. Click to enable.
 
 ## Config
 
