@@ -7,8 +7,11 @@ require_relative "../reactor"
 require "jekyll"
 
 Jekyll::Hooks.register :site, :post_write, priority: :high do |s|
-  next if s.reloader; s.reloader = Jekyll::Reload::Reactor.new(s)
-    .tap do |o|
+  next if s.reloader
+
+  if s.config["serving"]
+    s.reloader = Jekyll::Reload::Reactor.new(s).tap do |o|
       o.start
     end
+  end
 end
