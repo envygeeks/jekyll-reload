@@ -3,7 +3,7 @@ plugins:
   duplication:
     enabled: false
   rubocop:
-    channel: rubocop-0-51
+    channel: rubocop-0-52
     enabled: true
     config:
       file: .rubocop.yml
