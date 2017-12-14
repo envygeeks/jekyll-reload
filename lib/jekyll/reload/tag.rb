@@ -9,6 +9,7 @@ module Jekyll
   module Reload
     class Tag < Liquid::Tag
       def render(ctx)
+        return "" unless Jekyll.env == "development"
         config = ctx.registers[:site].config["reloader"]
         path = "http://#{config['host']}:#{config['port']}/livereload.js"
         a = +"<script type='text/javascript' src='#{path}'>"
