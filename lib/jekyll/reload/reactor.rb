@@ -53,21 +53,32 @@ module Jekyll
       # --
       def reload
         Jekyll.logger.debug("Reloader: ", "reloaded at #{Time.now}")
-        paths.map do |v|
-          @wsc.each do |sv|
-            sv.send(JSON.dump({
-              liveCSS: true,
-              command: "reload",
-              path: v,
-            }))
+        Mutex.new.synchronize do
+          paths.map do |v|
+            @wsc.each do |sv|
+              sv.send(JSON.dump({
+                liveCSS: false,
+                command: "reload",
+                path: v,
+              }))
+            end
           end
         end
+
+        ping_and_kill
       end
 
       # --
       def paths
         (jekyll.pages + jekyll.posts.docs + jekyll.documents)
           .uniq.map(&:path)
+      end
+
+      # --
+      def ping_and_kill
+        @wsc.delete_if do |v|
+          !v.ping
+        end
       end
 
       # --
