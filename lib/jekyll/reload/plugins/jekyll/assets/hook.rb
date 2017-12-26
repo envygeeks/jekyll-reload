@@ -8,7 +8,8 @@ begin
     require_relative "default"
 
     Jekyll::Assets::Hook.register :env, :after_init do
-      append_path Pathutil.new(__dir__).join("../../../vendor").expand_path.to_s
+      append_path Pathutil.new(__dir__).join("../../../vendor")
+        .expand_path.to_s
     end
   end
 rescue LoadError

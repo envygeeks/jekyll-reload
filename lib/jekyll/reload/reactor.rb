@@ -7,6 +7,10 @@ require "eventmachine"
 
 module Jekyll
   module Reload
+    # --
+    # Reacts to Jekyll's rebuilding, so that we can
+    #   trigger LiveReloader.
+    # --
     class Reactor
       attr_reader :jekyll, :wsc
       extend Forwardable::Extended

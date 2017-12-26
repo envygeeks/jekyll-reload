@@ -7,6 +7,10 @@ require "em-websocket"
 
 module Jekyll
   module Reload
+    # --
+    # Creates a server so that we can not only serve WebSocket
+    #   connections, but so that we can also serve LiveReload.
+    # --
     class Server < EventMachine::WebSocket::Connection
       extend Forwardable::Extended
 

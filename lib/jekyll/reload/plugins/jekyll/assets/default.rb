@@ -7,6 +7,10 @@ begin
 
   module Jekyll
     module Reload
+      # --
+      # Provides a default for Jekyll Assets. This sets
+      #   a SHA so we can track it internally.
+      # --
       class Default < Jekyll::Assets::Default
         content_types "application/javascript"
 
